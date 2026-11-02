@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>klap inside Claude Code</title>
+<meta name="description" content="The command and my prompts from the reel.">
+<meta name="theme-color" content="#FAFAF7">
+<meta property="og:title" content="klap inside Claude Code">
+<meta property="og:description" content="The command and my prompts from the reel.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+</head>
+<body>
+<style>
+:root{--bg:#FAFAF7;--ink:#0A0A14;--m:rgba(10,10,20,.58);--p:#0000FF;--pl:rgba(0,0,255,.08);--y:#FFE500;--line:rgba(10,10,20,.08)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.grid{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(0,0,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,255,.06) 1px,transparent 1px);background-size:28px 28px}
+.glow{position:fixed;width:80vw;height:80vw;left:-30vw;top:-18vw;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(0,0,255,.13),rgba(0,0,255,0) 68%)}
+.wrap{position:relative;z-index:1;max-width:540px;margin:0 auto;padding:22px 18px 64px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:6px 0 30px}
+.klap{display:flex;align-items:center;gap:8px;font-weight:800;font-size:22px;letter-spacing:-.04em}
+.me{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--m)}
+.me img{width:30px;height:30px;border-radius:50%;object-fit:cover;border:2px solid var(--y)}
+.chip{display:inline-flex;align-items:center;gap:9px;padding:9px 14px 9px 11px;border-radius:40px;background:#fff;box-shadow:0 10px 30px rgba(20,20,60,.08);font-size:13px;font-weight:800}
+.chip i{width:9px;height:9px;border-radius:50%;background:var(--p);box-shadow:0 0 14px var(--p)}
+h1{font-size:48px;line-height:.95;letter-spacing:-.055em;font-weight:900;margin:20px 0 14px}
+h1 em{font-style:normal;color:var(--p)}
+.lede{font-size:17px;line-height:1.45;color:var(--m);font-weight:500}
+h2{font-size:26px;letter-spacing:-.045em;font-weight:900;margin:44px 0 14px;display:flex;align-items:baseline;gap:10px}
+h2 small{font-size:13px;letter-spacing:0;font-weight:700;color:var(--p)}
+.cmd{margin-top:24px;border-radius:24px;background:var(--ink);padding:18px 18px 16px;box-shadow:0 24px 50px rgba(0,0,255,.2);position:relative}
+.cmd .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cmd .top span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);font-weight:800}
+.cmd code{display:block;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:14px;line-height:1.55;color:#fff;overflow-wrap:anywhere}
+.cmd code b{color:var(--y);font-weight:700}
+.copy{flex:none;border:0;cursor:pointer;height:34px;padding:0 14px;border-radius:30px;background:var(--y);color:#000;font:800 13px Inter,-apple-system,"Segoe UI",sans-serif;transition:transform .15s}
+.copy:active{transform:scale(.95)}
+.copy.ok{background:#fff}
+.steps{margin-top:12px;display:grid;gap:8px}
+.step{display:flex;gap:12px;align-items:center;padding:14px 16px;border-radius:20px;background:rgba(255,255,255,.85);box-shadow:inset 0 0 0 1.5px #fff,0 6px 18px rgba(20,20,60,.05)}
+.step b{flex:none;width:30px;height:30px;border-radius:50%;background:var(--pl);color:var(--p);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900}
+.step p{font-size:15px;font-weight:600;line-height:1.35}
+.step kbd{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;background:var(--pl);color:var(--p);padding:2px 7px;border-radius:7px}
+.step a{color:var(--p);font-weight:800}
+.tips{display:grid;gap:8px}
+.t{padding:14px 16px;border-radius:20px;background:#fff;font-size:15px;line-height:1.4;color:var(--m);font-weight:500;box-shadow:0 6px 18px rgba(20,20,60,.05);border-left:4px solid var(--p)}
+.t b{color:var(--ink);font-weight:800}
+.t kbd{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;background:var(--pl);color:var(--p);padding:2px 7px;border-radius:7px}
+.screen{margin-top:30px;padding:8px;border-radius:22px;background:#fff;box-shadow:0 30px 70px rgba(20,20,60,.16)}
+.screen video{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:15px;background:#eee}
+.prompts{display:grid;gap:10px}
+.pr{padding:16px 16px 14px;border-radius:22px;background:#fff;box-shadow:0 8px 24px rgba(20,20,60,.06),inset 0 0 0 1.5px rgba(10,10,20,.05)}
+.pr .h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.pr h3{font-size:15px;letter-spacing:-.02em;font-weight:800;display:flex;align-items:center;gap:8px}
+.pr h3 i{font-style:normal;font-size:12px;color:var(--p);font-weight:900}
+.pr .copy{background:var(--pl);color:var(--p);height:30px;padding:0 12px;font-size:12px}
+.pr .copy.ok{background:var(--p);color:#fff}
+.pr p{font-size:14.5px;line-height:1.45;color:rgba(10,10,20,.78);font-weight:500}
+.pr p u{text-decoration:none;color:var(--p);font-weight:700}
+.pr.star{box-shadow:0 0 0 2px var(--p),0 14px 34px rgba(0,0,255,.16)}
+.pr.star .tag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:var(--y);padding:3px 8px;border-radius:20px;font-weight:900}
+.tip{margin-top:26px;padding:20px 20px 22px;border-radius:24px;background:var(--ink);color:#fff;font-size:16px;line-height:1.45;font-weight:500}
+.tip small{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:8px;font-weight:800}
+.tip b{color:var(--y)}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:60px;border-radius:40px;background:var(--p);color:#fff;font-weight:800;font-size:18px;text-decoration:none;margin-top:26px;box-shadow:0 18px 40px rgba(0,0,255,.25)}
+.btn span{color:var(--y)}
+.small{text-align:center;font-size:13px;color:var(--m);margin-top:10px;font-weight:600}
+footer{margin-top:40px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--m);border-top:1px solid var(--line);padding-top:16px;font-weight:600}
+</style>
+<div class="grid"></div><div class="glow"></div>
+<div class="wrap">
+  <nav>
+    <div class="klap"><svg width="26" height="26" viewBox="0 14 80 80"><path fill-rule="evenodd" clip-rule="evenodd" fill="#0A0A14" d="M2.17987 24.9202C0 29.1984 0 34.7989 0 46V62C0 73.201 0 78.8016 2.17987 83.0798C4.09734 86.843 7.15695 89.9027 10.9202 91.8201C15.1984 94 20.7989 94 32 94H48C59.201 94 64.8016 94 69.0798 91.8201C72.843 89.9027 75.9027 86.843 77.8201 83.0798C80 78.8016 80 73.201 80 62V46C80 34.799 80 29.1984 77.8201 24.9202C75.9027 21.1569 72.843 18.0973 69.0798 16.1799C64.8016 14 59.201 14 48 14H32C20.799 14 15.1984 14 10.9202 16.1799C7.15695 18.0973 4.09734 21.1569 2.17987 24.9202ZM45.3839 56.078L32.5659 74H18.8199L34.5959 52.946L19.5739 33.11H32.6819L45.3839 50.742V33.11H56.7519V74H45.3839V56.078Z"/></svg>Klap</div>
+    <div class="me"><img src="assets/profile.jpg" alt="">marcelgrau</div>
+  </nav>
+
+  <span class="chip"><i></i>You commented MCP</span>
+  <h1>Your clipping team,<br>inside <em>Claude Code</em>.</h1>
+  <p class="lede">One line connects klap to Claude. Then you just ask.</p>
+
+  <div class="cmd">
+    <div class="top"><span>Paste in your terminal</span><button class="copy" data-copy="claude mcp add --transport http klap https://api.klap.app/mcp/agents">Copy</button></div>
+    <code><b>claude mcp add</b> --transport http klap<br>https://api.klap.app/mcp/agents</code>
+  </div>
+
+  <h2>Set it up <small>2 min</small></h2>
+  <div class="steps">
+    <div class="step"><b>1</b><p>No Claude Code yet? <a href="https://claude.com/claude-code" target="_blank" rel="noopener">Get it here</a></p></div>
+    <div class="step"><b>2</b><p>Paste the command above in your terminal, press Enter</p></div>
+    <div class="step"><b>3</b><p>Open Claude Code, type <kbd>/mcp</kbd>, pick klap, Authenticate</p></div>
+    <div class="step"><b>4</b><p>Sign in to klap and approve. No API key</p></div>
+    <div class="step"><b>5</b><p>Ask <kbd>what can klap do?</kbd> If it lists its tools, you're in</p></div>
+  </div>
+
+  <div class="screen"><video src="assets/demo.mp4" poster="assets/poster.jpg" autoplay muted loop playsinline></video></div>
+
+  <h2>How to use it</h2>
+  <div class="tips">
+    <div class="t"><b>Link your socials in klap first.</b> Claude can only post where klap is connected.</div>
+    <div class="t"><b>Say topic, length and who it's for.</b> Vague ask, vague clips.</div>
+    <div class="t"><b>Post the top scores first.</b> One or two a day beats 30 at once.</div>
+    <div class="t"><b>Test with "visible only to me".</b> Check one post before going public.</div>
+    <div class="t"><b>Nothing to update.</b> New klap tools show up on their own. If it stops answering, <kbd>/mcp</kbd> and Authenticate again.</div>
+  </div>
+
+  <h2>My prompts</h2>
+  <div class="prompts">
+    <div class="pr star"><div class="h"><h3><i>01</i>From the reel</h3><button class="copy" data-copy="Five shorts from this podcast, post the best one tomorrow at 9am: &lt;link&gt;">Copy</button></div><p>Five shorts from this podcast, post the best one tomorrow at 9am: <u>&lt;link&gt;</u></p></div>
+    <div class="pr"><div class="h"><h3><i>02</i>Shorts on one topic</h3><button class="copy" data-copy="Turn this video into 5 shorts under 45 seconds, only the moments about &lt;topic&gt;. Each one has to start with a strong sentence, no intros: &lt;link&gt;">Copy</button></div><p>Turn this video into 5 shorts under 45 seconds, only the moments about <u>&lt;topic&gt;</u>. Each one has to start with a strong sentence, no intros: <u>&lt;link&gt;</u></p></div>
+    <div class="pr"><div class="h"><h3><i>03</i>Hook hunter</h3><button class="copy" data-copy="Read the transcript of my last video and list the 10 lines that would work best as a hook, with timestamps. Then make shorts of the top 3.">Copy</button></div><p>Read the transcript of my last video and list the 10 lines that would work best as a hook, with timestamps. Then make shorts of the top 3.</p></div>
+    <div class="pr"><div class="h"><h3><i>04</i>A week on autopilot</h3><button class="copy" data-copy="Schedule one clip a day for the next 7 days at 6pm on all my connected accounts, highest score first.">Copy</button></div><p>Schedule one clip a day for the next 7 days at 6pm on all my connected accounts, highest score first.</p></div>
+  </div>
+
+  <div class="tip"><small>My one rule</small>The more you tell it what you want, <b>the better the clips get.</b></div>
+
+  <a class="btn" href="https://klap.app" target="_blank" rel="noopener"><span>✦</span> Try klap free</a>
+  <p class="small">Free to try, no credit card. You need an account to Authenticate.</p>
+
+  <footer><span>Paid partnership with klap</span><span>marcelgrau</span></footer>
+</div>
+<script>
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{
+  const t=b.dataset.copy,done=()=>{const o=b.textContent;b.textContent='Copied';b.classList.add('ok');setTimeout(()=>{b.textContent=o;b.classList.remove('ok')},1400)};
+  if(navigator.clipboard&&isSecureContext){navigator.clipboard.writeText(t).then(done,()=>fb(t,done))}else fb(t,done);
+}));
+function fb(t,done){const a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy');done()}catch(e){}a.remove()}
+</script>
+
+</body>
+</html>
